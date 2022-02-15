@@ -1,0 +1,60 @@
+html {
+    background-color: black;
+    color: white;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.contents{
+    display: flex;
+}
+
+.menu{
+    padding: 1rem;
+    width: 20vw;
+    height: 100vh;
+    background-color: rgb(55, 0, 255);
+}
+
+.project-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    gap: 0.5rem;
+}
+
+button{
+    width: 17vw;
+}
+
+.right-column{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 1rem;
+}
+
+.todo{
+    border: 1px solid white;
+    padding: 1rem;
+    margin: 1rem 0 -1rem 1rem;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: red;
+}
+
+.hidden {
+    display: none;
+}
