@@ -1,4 +1,4 @@
-import {projectsHold} from "./appLogic.js";
+import {projectsHolder} from "./appLogic.js";
 
 
 //push projects and todo list to DOM
@@ -11,18 +11,17 @@ function createEl(div, className=""){
     return el;
 }
 
-
 //to the left side menu.
 function renderMenu() {
     const menuEl = createEl("div", "menu");
 
     const ulEl = createEl("ul", "project-list");
-    Object.keys(projectsHold).forEach(project => {
+    Object.keys(projectsHolder).forEach(project => {
 
         function displaySelectedProject() {
-            const rightColumnEl = document.querySelector(".right-column");
-            rightColumnEl.remove();
+            resetRightColumn();
             displayToDo(project);
+            // console.log(objDisplayedInDom);
         };
 
         const liEl = createEl("li");
@@ -38,10 +37,25 @@ function renderMenu() {
     contentsEl.appendChild(menuEl);
 }
 
+function resetRightColumn(){
+    const rightColumnEl = document.querySelector(".right-column");
+    rightColumnEl.remove();
+}
+
+// to keep track of what project is being displayed
+let objDisplayedInDom;
+
+
+//display todo of selected project
 function displayToDo(objectToDisplay){
-    
+
+
+    objDisplayedInDom = objectToDisplay;
+
+
+
     const rightColumnEl = createEl("div", "right-column");
-    const project  = projectsHold[objectToDisplay];
+    const project  = projectsHolder[objectToDisplay];
     
     project.forEach(todo => {
         const toDoEl = createEl("div", "todo");
@@ -70,3 +84,5 @@ function displayToDo(objectToDisplay){
 renderMenu();
 
 displayToDo("default");
+
+export {displayToDo, resetRightColumn, objDisplayedInDom};

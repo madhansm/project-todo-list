@@ -58,3 +58,12 @@ button{
 .hidden {
     display: none;
 }
+
+#add-to-do{
+    position:absolute;
+    text-align: center;
+    right: 3rem;
+    top: 3rem;
+    height: 2rem;
+    width: 2rem;
+}

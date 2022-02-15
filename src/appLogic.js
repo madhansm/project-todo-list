@@ -35,6 +35,6 @@ projectsHolder["hello"] = [makeToDo("mdsrajghlatest 1", "ldfgdesc 1 loooonngggg"
 projectsHolder["worl"] = [makeToDo("dfghsadgtest 1", "dzdfghdsfhesc 1 loooonngggg", "High", "02-03-2022")];
 
 
-export let projectsHold = projectsHolder;
+export {projectsHolder, makeToDo};
 
 
