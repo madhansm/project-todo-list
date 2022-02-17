@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,32 +8,58 @@
     <title>ToDo List</title>
     <script src="main.js" defer></script>
 </head>
+
 <body>
     <div class="contents">
         <button id="add-to-do">+</button>
+
         <div class="modal" id="myModal">
 
             <div class="modal-content">
+
                 <label for="title">To-Do</label>
                 <input type="text" name="title" id="title" placeholder="Enter To-Do title here"><br>
+
                 <label for="description">About To-Do</label>
                 <input type="text" name="description" id="description" placeholder="Enter deatils of To-Do here"><br>
+
                 <label for="dueDate">Due Date</label>
                 <input type="text" name="dueDate" id="dueDate" placeholder="dd/mm/yyyy"><br>
+
                 <label for="priority">Priority</label>
                 <div class="radio-btn">
                     <input type="radio" name="priority" id="Low" value="low" checked>Low
                     <input type="radio" name="priority" id="Medium" value="medium">Medium
                     <input type="radio" name="priority" id="High" value="high">High
                 </div>
+
                 <div class="submit-cancel-btn">
                     <input type="button" value="Save To-Do" id="submit">
                     <input type="button" value="Cancel" id="cancel">
                 </div>
+
             </div>
 
         </div>
+
+        <div class="menu">
+
+            <ul class="project-list">
+
+                <li class="add-project-btn">
+                    <button class="add-project-btn">Add Project</button>
+                </li>
+
+                <li class="add-project-textbox hidden">
+                    <input type="text" id="add-project-box" placeholder="Project Name">
+                </li>
+
+            </ul>
+
+        </div>
+        
     </div>
-    
+
 </body>
+
 </html>
