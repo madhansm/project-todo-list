@@ -1,21 +1,21 @@
-import {projectsHolder} from "./appLogic.js";
+import { add } from "lodash";
+import { projectsHolder } from "./appLogic.js";
 
 
 //push projects and todo list to DOM
 let contentsEl = document.querySelector(".contents");
 
 //create Element
-function createEl(div, className=""){
+function createEl(div, className = "") {
     const el = document.createElement(div);
-    if(className)el.classList.add(className);
+    if (className) el.classList.add(className);
     return el;
 }
 
 //to the left side menu.
 function renderMenu() {
-    const menuEl = createEl("div", "menu");
-
-    const ulEl = createEl("ul", "project-list");
+    const menuEl = document.querySelector(".menu");
+    const ulEl = document.querySelector(".project-list");
     Object.keys(projectsHolder).forEach(project => {
 
         function displaySelectedProject() {
@@ -24,30 +24,36 @@ function renderMenu() {
             // console.log(objDisplayedInDom);
         };
 
-        const liEl = createEl("li");
+        const liEl = createEl("li", "project");
         const buttonEl = createEl("button");
         buttonEl.addEventListener("click", displaySelectedProject);
         buttonEl.append(project);
 
         liEl.appendChild(buttonEl);
-        ulEl.appendChild(liEl);
 
-    })
-    menuEl.appendChild(ulEl);
-    contentsEl.appendChild(menuEl);
+        if (project === "default") {
+            ulEl.prepend(liEl);
+        } else {
+            ulEl.appendChild(liEl);
+        }
+
+    });
 }
 
-function resetRightColumn(){
+function menuReset() {
+    let projectsList = document.querySelectorAll(".project");
+    projectsList.forEach(project => project.remove());
+    renderMenu();
+}
+
+
+function resetRightColumn() {
     const rightColumnEl = document.querySelector(".right-column");
     rightColumnEl.remove();
 }
 
-// to keep track of what project is being displayed
-let objDisplayedInDom;
-
-
 //display todo of selected project
-function displayToDo(objectToDisplay){
+function displayToDo(objectToDisplay) {
 
 
     objDisplayedInDom = objectToDisplay;
@@ -55,11 +61,11 @@ function displayToDo(objectToDisplay){
 
 
     const rightColumnEl = createEl("div", "right-column");
-    const project  = projectsHolder[objectToDisplay];
-    
+    const project = projectsHolder[objectToDisplay];
+
     project.forEach(todo => {
         const toDoEl = createEl("div", "todo");
-        
+
         const titleEl = createEl("div", "title");
         titleEl.append(todo.title);
         toDoEl.appendChild(titleEl);
@@ -67,11 +73,11 @@ function displayToDo(objectToDisplay){
         const descEl = createEl("div", "description");
         descEl.append(todo.description);
         toDoEl.appendChild(descEl);
-        
+
         const dueDateEl = createEl("div", "dueDate");
         dueDateEl.append(todo.dueDate);
         toDoEl.appendChild(dueDateEl);
-        
+
         const priorityEl = createEl("div", "priority");
         priorityEl.append(todo.priority);
         toDoEl.append(priorityEl);
@@ -81,9 +87,11 @@ function displayToDo(objectToDisplay){
     });
     contentsEl.appendChild(rightColumnEl);
 }
+// to keep track of what project is being displayed
+let objDisplayedInDom;
 
 renderMenu();
 
 displayToDo("default");
 
-export {displayToDo, resetRightColumn, objDisplayedInDom};
+export { displayToDo, resetRightColumn, objDisplayedInDom, renderMenu, menuReset };
