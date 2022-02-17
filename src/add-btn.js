@@ -5,8 +5,15 @@ let addBtn = document.getElementById("add-to-do");
 
 function openPopUp() {
     
-    console.log(projectsHolder.default);
+    function openPopUpDom() {
+        
+    }
+    
     projectsHolder[objDisplayedInDom].push(makeToDo("whazzupp", "lorem ipsum", "very high", "tomorrow"));
+    
+    
+    
+    
     resetRightColumn();
 
     displayToDo(objDisplayedInDom);

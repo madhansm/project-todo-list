@@ -67,3 +67,15 @@ button{
     height: 2rem;
     width: 2rem;
 }
+
+.modal-content{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.submit-cancel-btn {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
