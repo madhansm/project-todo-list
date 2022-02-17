@@ -10,6 +10,28 @@
 <body>
     <div class="contents">
         <button id="add-to-do">+</button>
+        <div class="modal" id="myModal">
+
+            <div class="modal-content">
+                <label for="title">To-Do</label>
+                <input type="text" name="title" id="title" placeholder="Enter To-Do title here"><br>
+                <label for="description">About To-Do</label>
+                <input type="text" name="description" id="description" placeholder="Enter deatils of To-Do here"><br>
+                <label for="dueDate">Due Date</label>
+                <input type="text" name="dueDate" id="dueDate" placeholder="dd/mm/yyyy"><br>
+                <label for="priority">Priority</label>
+                <div class="radio-btn">
+                    <input type="radio" name="priority" id="Low" value="low" checked>Low
+                    <input type="radio" name="priority" id="Medium" value="medium">Medium
+                    <input type="radio" name="priority" id="High" value="high">High
+                </div>
+                <div class="submit-cancel-btn">
+                    <input type="button" value="Save To-Do">
+                    <input type="button" value="Cancel">
+                </div>
+            </div>
+
+        </div>
     </div>
     
 </body>
