@@ -71,7 +71,28 @@ button{
 .modal-content{
     display: flex;
     flex-direction: column;
-    
+    position: absolute;
+    top: 20rem;
+    left: 20rem;
+
+    background-color: blue;
+    border: 2px solid   white;
+
+    height: 17rem;
+    width: 12rem;
+
+    padding: 20px;
+
+    opacity: 1;
+}
+
+.modal {
+    display: none;
+    position: absolute;
+    height: 104%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.75;
 }
 
 .submit-cancel-btn {

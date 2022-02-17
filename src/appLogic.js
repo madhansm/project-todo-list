@@ -1,8 +1,8 @@
 
 let projectsHolder = {};
 //factory to make new ToDo-s
-function makeToDo(title, description, priority, eta) {
-    return {title, description, priority, eta};
+function makeToDo(title, description, priority, dueDate) {
+    return {title, description, priority, dueDate};
 };
 
 //input date str to actual date

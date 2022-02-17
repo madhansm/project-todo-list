@@ -72,9 +72,9 @@ function displayToDo(objectToDisplay){
         priorityEl.append(todo.priority);
         toDoEl.append(priorityEl);
 
-        const etaEl = createEl("div", "eta");
-        etaEl.append(todo.eta);
-        toDoEl.appendChild(etaEl);
+        const dueDateEl = createEl("div", "dueDate");
+        dueDateEl.append(todo.dueDate);
+        toDoEl.appendChild(dueDateEl);
 
         rightColumnEl.appendChild(toDoEl);
     });
