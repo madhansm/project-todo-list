@@ -68,13 +68,14 @@ function displayToDo(objectToDisplay){
         descEl.append(todo.description);
         toDoEl.appendChild(descEl);
         
+        const dueDateEl = createEl("div", "dueDate");
+        dueDateEl.append(todo.dueDate);
+        toDoEl.appendChild(dueDateEl);
+        
         const priorityEl = createEl("div", "priority");
         priorityEl.append(todo.priority);
         toDoEl.append(priorityEl);
 
-        const dueDateEl = createEl("div", "dueDate");
-        dueDateEl.append(todo.dueDate);
-        toDoEl.appendChild(dueDateEl);
 
         rightColumnEl.appendChild(toDoEl);
     });

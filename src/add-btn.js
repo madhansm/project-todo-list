@@ -1,59 +1,72 @@
 import {projectsHolder, makeToDo} from "./appLogic.js"
 import {displayToDo, resetRightColumn, objDisplayedInDom} from "./dom.js";
 
-let addBtn = document.getElementById("add-to-do");
+function closePopUp() {
+    const modalEl = document.getElementById("myModal");
+    modalEl.style.display = "none";
+    console.log("popup closed");
+}
 
-function openPopUp() {
+function listenForSaveAndCancel() {
+    const saveBtn = document.getElementById('submit');
+    saveBtn.addEventListener("click", ()=> {
+        console.log("clicked save");
+        //check if title is empty
+        if (!(document.getElementById("title").value)) { alert("Please enter title"); return};
 
-    function resetAddToDo(title, description, dueDate, priority){
-        document.getElementById("title").value = '';
-        document.getElementById("description").value = '';
-        document.getElementById("dueDate").value = '';
-        document.querySelector('input[name="priority"]:checked').checked = false;
-        document.getElementById("Low").checked = true;
-    }   
+        //title not empty
+        saveToDo();
+        resetAddToDo();
+        closePopUp();
+    })
 
-    function saveToDo() {
-        
-        const titleEl = document.getElementById("title");
-        const title = titleEl.value;
+    const cancelBtn = document.getElementById("cancel");
+    cancelBtn.addEventListener("click", () => {
+        console.log("clicked cancel");
+        resetAddToDo();
+        closePopUp();
+    });
+}
 
-        const descriptionEl = document.getElementById("description");
-        const description = descriptionEl.value;
+function resetAddToDo(title, description, dueDate, priority){
+    document.getElementById("title").value = '';
+    document.getElementById("description").value = '';
+    document.querySelector('input[name="priority"]:checked').checked = false;
+    document.getElementById("dueDate").value = '';
+    document.getElementById("Low").checked = true;
 
-        const dueDateEl = document.getElementById("dueDate");
-        const dueDate = dueDateEl.value;
+    console.log("reset add todo");
+}   
 
-        const priorityEl = document.querySelector('input[name="priority"]:checked');
-        const priority  = priorityEl.value;
-        projectsHolder[objDisplayedInDom].push(makeToDo(title,description, priority, dueDate));
-        
-        resetAddToDo(titleEl, descriptionEl, dueDateEl, priorityEl);
-
-        resetRightColumn();
-        displayToDo(objDisplayedInDom);
-    }
+function saveToDo() {
     
-    function openPopUpDom() {
-        const popUpEl = document.querySelector("#myModal");
-        popUpEl.style.display = "block";
+    const titleEl = document.getElementById("title");
+    const title = titleEl.value;
 
-        const cancelBtn = document.getElementById("cancel");
-        cancelBtn.addEventListener("click", () => {
-            resetAddToDo();
-            popUpEl.style.display = "none";
-        });
-    
-        const saveBtn = document.getElementById("submit");
-        saveBtn.addEventListener("click", ()=> {
-            saveToDo();
-        });
-    }
-    openPopUpDom();
-    
+    const descriptionEl = document.getElementById("description");
+    const description = descriptionEl.value;
+
+    const priorityEl = document.querySelector('input[name="priority"]:checked');
+    const priority  = priorityEl.value;
+
+    const dueDateEl = document.getElementById("dueDate");
+    const dueDate = dueDateEl.value;
+
+    console.log(title, description, priority, dueDate);
+
+    projectsHolder[objDisplayedInDom].push(makeToDo(title, description, priority, dueDate));
+
     resetRightColumn();
-
     displayToDo(objDisplayedInDom);
 }
 
-addBtn.addEventListener("click", openPopUp);
+function openPopUpDom() {
+    const modalEl = document.getElementById("myModal");
+    modalEl.style.display = "block";
+    console.log("opened popup");
+}
+//listen for add button
+let addBtn = document.getElementById("add-to-do");
+addBtn.addEventListener("click", openPopUpDom);
+
+listenForSaveAndCancel();
