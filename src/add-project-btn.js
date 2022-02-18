@@ -1,9 +1,8 @@
-import {makeToDo, projectsHolder} from "./appLogic.js";
+import {projectsHolder} from "./appLogic.js";
 import {menuReset, displayToDo, resetRightColumn, objDisplayedInDom} from "./dom.js"
 
 function toggleTextbox() {
         const projectNameTextBoxEl = document.querySelector(".add-project-textbox");
-        // console.log(projectNameTextBoxEl);
         projectNameTextBoxEl.classList.toggle("hidden");
         let hidden = false;
         if(!hidden) {
@@ -27,7 +26,6 @@ textBox.addEventListener("keydown", (e) => {
         Object.keys(projectsHolder).forEach(project => {
 
             if (project === newProject) {
-                console.log(project);
                 duplicate ||= true;
             }
         });

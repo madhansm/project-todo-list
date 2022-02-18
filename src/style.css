@@ -56,10 +56,27 @@ button ,
     margin: 1rem 0 -1rem 1rem;
 }
 
+.todo-header {
+    display: flex;
+    justify-content: space-between;
+}
+
 .title {
     font-size: 1.5rem;
     font-weight: bold;
     color: red;
+}
+
+.delete-todo {
+    background: none;
+	color: white;
+	border: none;
+	padding: 0;
+	font: inherit;
+    font-size: small;
+	cursor: pointer;
+	outline: inherit;
+    width: 1rem;
 }
 
 .hidden {

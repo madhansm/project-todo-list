@@ -1,4 +1,3 @@
-import { add } from "lodash";
 import { projectsHolder } from "./appLogic.js";
 
 
@@ -21,7 +20,6 @@ function renderMenu() {
         function displaySelectedProject() {
             resetRightColumn();
             displayToDo(project);
-            // console.log(objDisplayedInDom);
         };
 
         const liEl = createEl("li", "project");
@@ -66,19 +64,32 @@ function displayToDo(objectToDisplay) {
 
     project.forEach(todo => {
         const toDoEl = createEl("div", "todo");
+        toDoEl.setAttribute("project-name", objectToDisplay);
+        
+        const todoHeaderEl = createEl ("div", "todo-header");
 
         const titleEl = createEl("div", "title");
         titleEl.append(todo.title);
-        toDoEl.appendChild(titleEl);
+        todoHeaderEl.appendChild(titleEl);
+        
+        const deleteBtnEl = createEl("button", "delete-todo");
+        deleteBtnEl.append("X");
+        todoHeaderEl.appendChild(deleteBtnEl);
+
+        toDoEl.appendChild(todoHeaderEl);
 
         const descEl = createEl("div", "description");
         descEl.append(todo.description);
         toDoEl.appendChild(descEl);
 
         const dueDateEl = createEl("div", "dueDate");
-        dueDateEl.append(todo.dueDate);
+        if (todo.dueDate === '') {
+            dueDateEl.append(todo.dueDate);
+        } else {
+            dueDateEl.append(todo.dueDate.toLocaleDateString('en-GB', { day: 'numeric', month: "short", year: 'numeric' }));
+            
+        }
         toDoEl.appendChild(dueDateEl);
-
         const priorityEl = createEl("div", "priority");
         priorityEl.append(todo.priority);
         toDoEl.append(priorityEl);
@@ -87,6 +98,8 @@ function displayToDo(objectToDisplay) {
         rightColumnEl.appendChild(toDoEl);
     });
     contentsEl.appendChild(rightColumnEl);
+
+
 }
 // to keep track of what project is being displayed
 let objDisplayedInDom;
