@@ -1,10 +1,14 @@
-import {projectsHolder} from "./appLogic.js";
-import {menuReset} from "./dom.js"
+import {makeToDo, projectsHolder} from "./appLogic.js";
+import {menuReset, displayToDo, resetRightColumn, objDisplayedInDom} from "./dom.js"
 
 function toggleTextbox() {
         const projectNameTextBoxEl = document.querySelector(".add-project-textbox");
         // console.log(projectNameTextBoxEl);
         projectNameTextBoxEl.classList.toggle("hidden");
+        let hidden = false;
+        if(!hidden) {
+            document.getElementById("add-project-box").focus(); 
+            hidden = true};
 }
 
 
@@ -14,12 +18,29 @@ addProjectBtn.addEventListener("click", toggleTextbox);
 const textBox = document.getElementById('add-project-box');
 textBox.addEventListener("keydown", (e) => {
     if (e.key === 'Enter') {
-        // console.log("enter pressed");
+
         let newProject = textBox.value;
-        projectsHolder[newProject] = [];
-        menuReset();
+        newProject = newProject.toLowerCase().charAt(0).toUpperCase() + newProject.slice(1);
+
+        // check Project Name Duplicate
+        let duplicate = false;
+        Object.keys(projectsHolder).forEach(project => {
+
+            if (project === newProject) {
+                console.log(project);
+                duplicate ||= true;
+            }
+        });
+        if (duplicate) {
+            alert("Project Exists");
+        } else {
+            projectsHolder[newProject] = [];
+            menuReset();
+        }
         textBox.value = '';
         toggleTextbox();
+        resetRightColumn();
+        displayToDo(newProject);
     }
 });
 

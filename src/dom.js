@@ -49,7 +49,8 @@ function menuReset() {
 
 function resetRightColumn() {
     const rightColumnEl = document.querySelector(".right-column");
-    rightColumnEl.remove();
+    if(rightColumnEl) {rightColumnEl.remove();};
+    
 }
 
 //display todo of selected project
