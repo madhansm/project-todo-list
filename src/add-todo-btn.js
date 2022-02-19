@@ -19,18 +19,18 @@ function listenForSaveAndCancel() {
 
         // if title not empty
 
-        //check if date valid and in future
+        //check if date valid
         if (new Date(document.getElementById("dueDate").value).toString() === "Invalid Date"){ 
             if(!(document.getElementById("dueDate").value === '')){
                 alert("Please enter valid date");
                 return;
             }
         };
-
-        if (!(isFuture(new Date(document.getElementById("dueDate").value)))) {
-            alert("Due date cannot be in the past");
-            return;
-        }
+        // check if date in future
+        // if (!(isFuture(new Date(document.getElementById("dueDate").value)))) {
+        //     alert("Due date cannot be in the past");
+        //     return;
+        // }
 
         saveToDo();
         resetAddToDo();
