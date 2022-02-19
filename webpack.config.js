@@ -21,6 +21,17 @@ module.exports = {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
             },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader',
+                ]
+            },
+            {
+                test: /\.(png|jpg)$/,
+                loader: 'url-loader'
+            }
         ]
-    }
+    },
+
 };

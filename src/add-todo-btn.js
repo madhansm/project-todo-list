@@ -1,7 +1,6 @@
 import {makeToDo} from "./appLogic.js"
 import {projectsHolder, saveToLocalStorage} from './data.js';
 import {displayToDo, resetRightColumn, objDisplayedInDom} from "./dom.js";
-import {closeProjectAddBox} from "./add-project-btn";
 // import isFuture from 'date-fns/isFuture';
 
 
@@ -85,7 +84,6 @@ document.onkeydown = function (e) {
     if (e.key === "Escape") {
         resetAddToDo();
         closePopUp();
-        closeProjectAddBox();
     }
 }
 

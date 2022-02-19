@@ -27,15 +27,21 @@ function renderMenu() {
         const buttonEl = createEl("button");
         buttonEl.addEventListener("click", displaySelectedProject);
         buttonEl.append(project);
+        buttonEl.classList.add("project-btn");
 
         liEl.appendChild(buttonEl);
 
         if (project === "default") {
+            liEl.classList.add("default-project");
+            buttonEl.classList.add("default-btn");
             ulEl.prepend(liEl);
         } else {
             //delete button
             let deleteProjectEl = createEl("button", "delete-project");
             deleteProjectEl.append("x");
+
+            let fillerBtn = createEl("button", "filler-button");
+            liEl.appendChild(fillerBtn);
             liEl.appendChild(deleteProjectEl);
 
             ulEl.appendChild(liEl);
@@ -104,6 +110,10 @@ function displayToDo(objectToDisplay) {
         rightColumnEl.appendChild(toDoEl);
     });
     contentsEl.appendChild(rightColumnEl);
+    const addToDoBtn = createEl("button");
+    addToDoBtn.setAttribute("id", "add-to-do");
+    addToDoBtn.append("+");
+    contentsEl.appendChild(addToDoBtn);
 
 
 }
