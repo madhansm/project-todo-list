@@ -5,6 +5,11 @@ function makeToDo(title, description, priority, dueDate) {
     return {title, description, priority, dueDate};
 };
 
+//delete project
+function deleteProject(project){
+    delete projectsHolder[project];
+    saveToLocalStorage();
+}
 
 //delete Todo
 function deleteTodo (projectName, todoName) {
@@ -15,6 +20,6 @@ function deleteTodo (projectName, todoName) {
     saveToLocalStorage();
 }
 
-export {projectsHolder, makeToDo, deleteTodo};
+export {projectsHolder, makeToDo, deleteTodo, deleteProject};
 
 

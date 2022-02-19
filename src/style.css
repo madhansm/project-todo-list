@@ -50,6 +50,20 @@ button ,
     gap: 1rem;
 }
 
+.project {
+    display: flex;
+}
+
+.delete-project {
+    display: none;
+    background-color:cadetblue;
+    width: 1rem;
+}
+
+.project:hover > .delete-project{
+    display: block;
+}
+
 .todo{
     border: 1px solid white;
     padding: 1rem;

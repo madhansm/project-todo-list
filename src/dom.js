@@ -33,6 +33,11 @@ function renderMenu() {
         if (project === "default") {
             ulEl.prepend(liEl);
         } else {
+            //delete button
+            let deleteProjectEl = createEl("button", "delete-project");
+            deleteProjectEl.append("x");
+            liEl.appendChild(deleteProjectEl);
+
             ulEl.appendChild(liEl);
         }
 
@@ -109,4 +114,4 @@ renderMenu();
 
 displayToDo("default");
 
-export { displayToDo, resetRightColumn, objDisplayedInDom, renderMenu, menuReset };
+export { displayToDo, resetRightColumn, objDisplayedInDom, renderMenu, menuReset};

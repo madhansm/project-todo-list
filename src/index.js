@@ -8,6 +8,6 @@ import "./add-project-btn.js";
 
 import "./date-picker.js";
 
-import './todo-delete-btn';
+import './delete-todo-project-btn.js';
 
 import './data.js';
