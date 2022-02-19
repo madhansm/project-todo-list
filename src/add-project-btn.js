@@ -1,4 +1,4 @@
-import {projectsHolder} from "./appLogic.js";
+import {projectsHolder, saveToLocalStorage} from './data.js';
 import {menuReset, displayToDo, resetRightColumn, objDisplayedInDom} from "./dom.js"
 
 function toggleTextbox() {
@@ -33,6 +33,7 @@ textBox.addEventListener("keydown", (e) => {
             alert("Project Exists");
         } else {
             projectsHolder[newProject] = [];
+            saveToLocalStorage();
             menuReset();
         }
         textBox.value = '';

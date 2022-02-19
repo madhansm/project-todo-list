@@ -1,4 +1,5 @@
-import {projectsHolder, makeToDo} from "./appLogic.js"
+import {makeToDo} from "./appLogic.js"
+import {projectsHolder, saveToLocalStorage} from './data.js';
 import {displayToDo, resetRightColumn, objDisplayedInDom} from "./dom.js";
 import {closeProjectAddBox} from "./add-project-btn";
 import isFuture from 'date-fns/isFuture';
@@ -67,6 +68,7 @@ function saveToDo() {
     if (dueDateEl.value === "") {dueDate = ''} else {dueDate = new Date(dueDateEl.value)};
 
     projectsHolder[objDisplayedInDom].push(makeToDo(title, description, priority, dueDate));
+    saveToLocalStorage();
     resetRightColumn();
     displayToDo(objDisplayedInDom);
 }

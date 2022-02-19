@@ -9,3 +9,5 @@ import "./add-project-btn.js";
 import "./date-picker.js";
 
 import './todo-delete-btn';
+
+import './data.js';
