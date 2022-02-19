@@ -2,7 +2,7 @@ import {makeToDo} from "./appLogic.js"
 import {projectsHolder, saveToLocalStorage} from './data.js';
 import {displayToDo, resetRightColumn, objDisplayedInDom} from "./dom.js";
 import {closeProjectAddBox} from "./add-project-btn";
-import isFuture from 'date-fns/isFuture';
+// import isFuture from 'date-fns/isFuture';
 
 
 function closePopUp() {
