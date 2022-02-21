@@ -1,6 +1,6 @@
-import {makeToDo} from "./appLogic.js"
-import {projectsHolder, saveToLocalStorage} from './data.js';
-import {displayToDo, resetRightColumn, objDisplayedInDom} from "./dom.js";
+import { makeToDo } from "./appLogic.js"
+import { projectsHolder, saveToLocalStorage } from './data.js';
+import { displayToDo, resetRightColumn, objDisplayedInDom } from "./dom.js";
 // import isFuture from 'date-fns/isFuture';
 
 
@@ -11,16 +11,16 @@ function closePopUp() {
 
 function listenForSaveAndCancel() {
     const saveBtn = document.getElementById('submit');
-    saveBtn.addEventListener("click", ()=> {
+    saveBtn.addEventListener("click", () => {
 
         //check if title is empty
-        if (!(document.getElementById("title").value)) { alert("Please enter title"); return};
+        if (!(document.getElementById("title").value)) { alert("Please enter title"); return };
 
         // if title not empty
 
         //check if date valid
-        if (new Date(document.getElementById("dueDate").value).toString() === "Invalid Date"){ 
-            if(!(document.getElementById("dueDate").value === '')){
+        if (new Date(document.getElementById("dueDate").value).toString() === "Invalid Date") {
+            if (!(document.getElementById("dueDate").value === '')) {
                 alert("Please enter valid date");
                 return;
             }
@@ -43,16 +43,16 @@ function listenForSaveAndCancel() {
     });
 }
 
-function resetAddToDo(){
+function resetAddToDo() {
     document.getElementById("title").value = '';
     document.getElementById("description").value = '';
     document.querySelector('input[name="priority"]:checked').checked = false;
     document.getElementById("dueDate").value = '';
     document.getElementById("Low").checked = true;
-}   
+}
 
 function saveToDo() {
-    
+
     const titleEl = document.getElementById("title");
     const title = titleEl.value;
 
@@ -60,11 +60,11 @@ function saveToDo() {
     const description = descriptionEl.value;
 
     const priorityEl = document.querySelector('input[name="priority"]:checked');
-    const priority  = priorityEl.value;
+    const priority = priorityEl.value;
 
     const dueDateEl = document.getElementById("dueDate");
     let dueDate;
-    if (dueDateEl.value === "") {dueDate = ''} else {dueDate = new Date(dueDateEl.value)};
+    if (dueDateEl.value === "") { dueDate = '' } else { dueDate = new Date(dueDateEl.value) };
 
     projectsHolder[objDisplayedInDom].push(makeToDo(title, description, priority, dueDate));
     saveToLocalStorage();

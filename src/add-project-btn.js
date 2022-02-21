@@ -1,13 +1,13 @@
-import {projectsHolder, saveToLocalStorage} from './data.js';
-import {menuReset, displayToDo, resetRightColumn, objDisplayedInDom} from "./dom.js"
+import { projectsHolder, saveToLocalStorage } from './data.js';
+import { menuReset, displayToDo, resetRightColumn, objDisplayedInDom } from "./dom.js"
 
 function toggleTextbox() {
-        // const projectNameTextBoxEl = document.querySelector(".add-project-textbox");
-        // projectNameTextBoxEl.classList.toggle("hidden");
-        // let hidden = false;
-        // if(!hidden) {
-        //     document.getElementById("add-project-box").focus(); 
-        //     hidden = true};
+    // const projectNameTextBoxEl = document.querySelector(".add-project-textbox");
+    // projectNameTextBoxEl.classList.toggle("hidden");
+    // let hidden = false;
+    // if(!hidden) {
+    //     document.getElementById("add-project-box").focus(); 
+    //     hidden = true};
 }
 
 
@@ -56,4 +56,4 @@ function closeProjectAddBox() {
 // })
 
 
-export {closeProjectAddBox}
+export { closeProjectAddBox }

@@ -1,68 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ToDo List</title>
     <script src="main.js" defer></script>
-</head>
+  </head>
 
-<body>
-    <header>
-        To-do
-    </header>
+  <body>
+    <header>To-do</header>
     <div class="contents">
+      <div class="modal" id="myModal">
+        <div class="modal-content">
+          <label for="title">To-Do</label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Enter To-Do title here"
+          /><br />
 
+          <label for="description">About To-Do</label>
+          <input
+            type="text"
+            name="description"
+            id="description"
+            placeholder="Enter deatils of To-Do here"
+          /><br />
 
-        <div class="modal" id="myModal">
+          <label for="dueDate">Due Date</label>
+          <input
+            type="text"
+            name="dueDate"
+            id="dueDate"
+            placeholder="dd MMM yyyy"
+          /><br />
 
-            <div class="modal-content">
+          <label for="priority">Priority</label>
+          <div class="radio-btn">
+            <input
+              type="radio"
+              name="priority"
+              id="Low"
+              value="low"
+              checked
+            />Low
+            <input
+              type="radio"
+              name="priority"
+              id="Medium"
+              value="medium"
+            />Medium
+            <input type="radio" name="priority" id="High" value="high" />High
+          </div>
 
-                <label for="title">To-Do</label>
-                <input type="text" name="title" id="title" placeholder="Enter To-Do title here"><br>
-
-                <label for="description">About To-Do</label>
-                <input type="text" name="description" id="description" placeholder="Enter deatils of To-Do here"><br>
-
-                <label for="dueDate">Due Date</label>
-                <input type="text" name="dueDate" id="dueDate" placeholder="dd MMM yyyy"><br>
-
-                <label for="priority">Priority</label>
-                <div class="radio-btn">
-                    <input type="radio" name="priority" id="Low" value="low" checked>Low
-                    <input type="radio" name="priority" id="Medium" value="medium">Medium
-                    <input type="radio" name="priority" id="High" value="high">High
-                </div>
-
-                <div class="submit-cancel-btn">
-                    <input type="button" value="Save To-Do" id="submit">
-                    <input type="button" value="Cancel" id="cancel">
-                </div>
-
-            </div>
-
+          <div class="submit-cancel-btn">
+            <input type="button" value="Save To-Do" id="submit" />
+            <input type="button" value="Cancel" id="cancel" />
+          </div>
         </div>
+      </div>
 
-        <div class="menu">
+      <div class="menu">
+        <ul class="project-list">
+          <li class="usr-projects">Projects</li>
 
-            <ul class="project-list">
-
-                <li class="usr-projects">
-                    Projects
-                </li>
-
-                <li class="add-project-textbox ">
-                    <input type="text" id="add-project-box" placeholder="Add Project here">
-                </li>
-
-            </ul>
-
-        </div>
-        
+          <li class="add-project-textbox">
+            <input
+              type="text"
+              id="add-project-box"
+              placeholder="Add Project here"
+            />
+          </li>
+        </ul>
+      </div>
     </div>
-
-</body>
-
+  </body>
 </html>

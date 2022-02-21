@@ -1,5 +1,5 @@
-import {deleteTodo, deleteProject} from './appLogic.js';
-import {displayToDo, resetRightColumn, menuReset} from './dom.js';
+import { deleteTodo, deleteProject } from './appLogic.js';
+import { displayToDo, resetRightColumn, menuReset } from './dom.js';
 
 document.addEventListener("click", (e) => {
     //delete todo btn

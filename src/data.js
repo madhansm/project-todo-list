@@ -17,4 +17,4 @@ function saveToLocalStorage() {
 // console.log(JSON.parse(localStorage.getItem('projectsHolderObj')));
 
 
-export {projectsHolder, saveToLocalStorage};
+export { projectsHolder, saveToLocalStorage };

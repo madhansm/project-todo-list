@@ -1,211 +1,212 @@
-@import '~js-datepicker/dist/datepicker.min.css';
-@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+@import "~js-datepicker/dist/datepicker.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
 
 html {
-    font-family: 'Oxygen', sans-serif;
-    background-color: black;
-    color: white;
+  font-family: "Oxygen", sans-serif;
+  background-color: black;
+  color: white;
 }
 
-body{
-    margin: 0;
-    padding: 0;
+body {
+  margin: 0;
+  padding: 0;
 }
 
-header{
-    font-size: 2.5rem;
-    padding: 1rem;
-    background-color: #21202A;
-    border-bottom: 2px solid black;
+header {
+  font-size: 2.5rem;
+  padding: 1rem;
+  background-color: #21202a;
+  border-bottom: 2px solid black;
 }
 
-.contents{
-    display: flex;
-    /* border: 2vh solid black; */
-    justify-content: space-between;
+.contents {
+  display: flex;
+  /* border: 2vh solid black; */
+  justify-content: space-between;
 }
 
-.menu{
-    /* padding: 1rem; */
-    width: 20vw;
-    height: 89vh;
-    background-color: #21202A;
+.menu {
+  /* padding: 1rem; */
+  width: 20vw;
+  height: 89vh;
+  background-color: #21202a;
 }
-
-
-
 
 .project-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    /* gap: 0.5rem; */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  /* gap: 0.5rem; */
 }
 
-.project-btn , .delete-project, .filler-button,
+.project-btn,
+.delete-project,
+.filler-button,
 #add-project-box,
 .usr-projects {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 
-    border-style: none;
+  border-style: none;
 
-    background: none;
-    color: #FEFEFF;
-    font-family: 'Oxygen', sans-serif;
-    font-weight: bold;
-    font-size: 1rem;
+  background: none;
+  color: #fefeff;
+  font-family: "Oxygen", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
 
-    padding: 0.5rem 0;
-    width: 20vw;
+  padding: 0.5rem 0;
+  width: 20vw;
 }
 
-#add-project-box{
-    border-bottom: 1px solid #8b8b8b; 
-    padding: 0.5rem;
-    width: 15vw;
+#add-project-box {
+  border-bottom: 1px solid #8b8b8b;
+  padding: 0.5rem;
+  width: 15vw;
 }
 
-#add-project-box:focus, textarea:focus, select:focus{
-    outline: none;
+#add-project-box:focus,
+textarea:focus,
+select:focus {
+  outline: none;
 }
 
 .project:hover {
-    background-color: #262632;
+  background-color: #262632;
 }
 
-.right-column{
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    gap: 1rem;
+.right-column {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 1rem;
 }
 
 .project {
-    display: flex;
-    max-width: 20vw;
+  display: flex;
+  max-width: 20vw;
 }
 
-.usr-projects{
-    text-align: left;
-    padding-left: 35px;
+.usr-projects {
+  text-align: left;
+  padding-left: 35px;
 }
 
 .default-project {
-    /* text-align: left; */
-    /* margin-left: 35px; */
+  /* text-align: left; */
+  /* margin-left: 35px; */
 }
 
-.default-btn{
-    text-align: left;
-    padding-left: 18px;
+.default-btn {
+  text-align: left;
+  padding-left: 18px;
 }
 
 .delete-project {
-    display: none;
-    /* background-color:cadetblue; */
-    width: 1rem;
-    margin-right: 7px;
-    padding: 0 7px;
-    border-left: 1px solid #8b8b8b;
+  display: none;
+  /* background-color:cadetblue; */
+  width: 1rem;
+  margin-right: 7px;
+  padding: 0 7px;
+  border-left: 1px solid #8b8b8b;
 }
 
 .filler-button {
-    display: block;
-    width: 1rem;
-    margin-right: 7px;
-    padding: 0 7px;
+  display: block;
+  width: 1rem;
+  margin-right: 7px;
+  padding: 0 7px;
 }
 
-.project:hover > .delete-project{
-    display: block;
+.project:hover > .delete-project {
+  display: block;
 }
 
-.project:hover > .filler-button{
-    display: none;
+.project:hover > .filler-button {
+  display: none;
 }
 
-.todo{
-    border: 1px solid white;
-    padding: 1rem;
-    margin: 1rem 0 -1rem 1rem;
+.todo {
+  border: 1px solid white;
+  padding: 1rem;
+  margin: 1rem 0 -1rem 1rem;
 }
 
 .todo-header {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: red;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: red;
 }
 
 .delete-todo {
-    background: none;
-	color: white;
-	border: none;
-	padding: 0;
-	font: inherit;
-    font-size: small;
-	cursor: pointer;
-	outline: inherit;
-    width: 1rem;
+  background: none;
+  color: white;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-size: small;
+  cursor: pointer;
+  outline: inherit;
+  width: 1rem;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
-#add-to-do{
-    /* position:absolute; */
-    /* right: 3rem; */
-    /* top: 3rem; */
+#add-to-do {
+  /* position:absolute; */
+  /* right: 3rem; */
+  /* top: 3rem; */
 
-    /* background-color: #21202A; */
-    /* text-align: center; */
-    /* height: 2rem; */
-    /* width: 2rem; */
+  /* background-color: #21202A; */
+  /* text-align: center; */
+  /* height: 2rem; */
+  /* width: 2rem; */
 
-    /* padding: ; */
+  /* padding: ; */
 }
 
-.modal-content{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 20rem;
-    left: 20rem;
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 20rem;
+  left: 20rem;
 
-    background-color: blue;
-    border: 2px solid   white;
+  background-color: blue;
+  border: 2px solid white;
 
-    height: 17rem;
-    width: 12rem;
+  height: 17rem;
+  width: 12rem;
 
-    padding: 20px;
+  padding: 20px;
 
-    opacity: 1;
+  opacity: 1;
 }
 
 .modal {
-    display: none;
-    position: absolute;
-    height: 104%;
-    width: 100%;
-    background-color: black;
-    opacity: 0.75;
+  display: none;
+  position: absolute;
+  height: 104%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.75;
 }
 
 .submit-cancel-btn {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 2rem;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
 }

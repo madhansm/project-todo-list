@@ -59,8 +59,8 @@ function menuReset() {
 
 function resetRightColumn() {
     const rightColumnEl = document.querySelector(".right-column");
-    if(rightColumnEl) {rightColumnEl.remove();};
-    
+    if (rightColumnEl) { rightColumnEl.remove(); };
+
 }
 
 //display todo of selected project
@@ -77,13 +77,13 @@ function displayToDo(objectToDisplay) {
     project.forEach(todo => {
         const toDoEl = createEl("div", "todo");
         toDoEl.setAttribute("project-name", objectToDisplay);
-        
-        const todoHeaderEl = createEl ("div", "todo-header");
+
+        const todoHeaderEl = createEl("div", "todo-header");
 
         const titleEl = createEl("div", "title");
         titleEl.append(todo.title);
         todoHeaderEl.appendChild(titleEl);
-        
+
         const deleteBtnEl = createEl("button", "delete-todo");
         deleteBtnEl.append("X");
         todoHeaderEl.appendChild(deleteBtnEl);
@@ -99,7 +99,7 @@ function displayToDo(objectToDisplay) {
             dueDateEl.append(todo.dueDate);
         } else {
             dueDateEl.append(new Date(todo.dueDate).toLocaleDateString('en-GB', { day: 'numeric', month: "short", year: 'numeric' }));
-            
+
         }
         toDoEl.appendChild(dueDateEl);
         const priorityEl = createEl("div", "priority");
@@ -124,4 +124,4 @@ renderMenu();
 
 displayToDo("default");
 
-export { displayToDo, resetRightColumn, objDisplayedInDom, renderMenu, menuReset};
+export { displayToDo, resetRightColumn, objDisplayedInDom, renderMenu, menuReset };
