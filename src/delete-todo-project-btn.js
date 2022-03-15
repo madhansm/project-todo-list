@@ -1,5 +1,7 @@
 import { deleteTodo, deleteProject } from './appLogic.js';
-import { displayToDo, resetRightColumn, menuReset } from './dom.js';
+import { displayToDo, resetRightColumn, menuReset, highlightCurrentProject } from './dom.js';
+
+
 
 document.addEventListener("click", (e) => {
     //delete todo btn
@@ -16,6 +18,12 @@ document.addEventListener("click", (e) => {
     if (e.target.className === "delete-project") {
         const projectName = e.target.parentElement.firstChild.textContent;
         deleteProject(projectName);
+        resetRightColumn();
+        displayToDo("default");
         menuReset();
+    }
+
+    if (e.target.className === "project-btn" || e.target.className === "project-btn default-btn") {
+        highlightCurrentProject(e.target.parentElement);
     }
 })

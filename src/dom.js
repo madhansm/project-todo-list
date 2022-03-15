@@ -60,16 +60,19 @@ function menuReset() {
 function resetRightColumn() {
     const rightColumnEl = document.querySelector(".right-column");
     if (rightColumnEl) { rightColumnEl.remove(); };
+}
 
+function highlightCurrentProject(projectEl) {
+    let projectNamesEl = document.querySelectorAll(".project");
+    projectNamesEl.forEach(project => {
+        project.classList.remove("active-project");
+    });
+    projectEl.classList.add("active-project");
 }
 
 //display todo of selected project
 function displayToDo(objectToDisplay) {
-
-
     objDisplayedInDom = objectToDisplay;
-
-
 
     const rightColumnEl = createEl("div", "right-column");
     const project = projectsHolder[objectToDisplay];
@@ -110,12 +113,6 @@ function displayToDo(objectToDisplay) {
         rightColumnEl.appendChild(toDoEl);
     });
     contentsEl.appendChild(rightColumnEl);
-    const addToDoBtn = createEl("button");
-    addToDoBtn.setAttribute("id", "add-to-do");
-    addToDoBtn.append("+");
-    contentsEl.appendChild(addToDoBtn);
-
-
 }
 // to keep track of what project is being displayed
 let objDisplayedInDom;
@@ -123,5 +120,6 @@ let objDisplayedInDom;
 renderMenu();
 
 displayToDo("default");
+highlightCurrentProject(document.querySelector(".default-project"));
 
-export { displayToDo, resetRightColumn, objDisplayedInDom, renderMenu, menuReset };
+export { displayToDo, resetRightColumn, objDisplayedInDom, renderMenu, menuReset, highlightCurrentProject };
