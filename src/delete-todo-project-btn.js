@@ -1,7 +1,16 @@
 import { deleteTodo, deleteProject } from './appLogic.js';
 import { displayToDo, resetRightColumn, menuReset, highlightCurrentProject } from './dom.js';
 
-
+function hideAllTodoDescription(targetEl) {
+    let allDescriptionEl = document.querySelectorAll('.description');
+    console.log(allDescriptionEl);
+    allDescriptionEl.forEach(descEl => {
+        if (!(descEl === targetEl)) {
+            console.log(descEl);
+            descEl.classList.add('hidden');
+        }
+    });
+}
 
 document.addEventListener("click", (e) => {
     //delete todo btn
@@ -19,11 +28,26 @@ document.addEventListener("click", (e) => {
         const projectName = e.target.parentElement.firstChild.textContent;
         deleteProject(projectName);
         resetRightColumn();
-        displayToDo("default");
+        displayToDo("home");
         menuReset();
     }
 
-    if (e.target.className === "project-btn" || e.target.className === "project-btn default-btn") {
+    //highlight current project
+    if (e.target.className === "project-btn" || e.target.className === "project-btn home-btn") {
         highlightCurrentProject(e.target.parentElement);
+    }
+
+    if (e.target.className === 'todo') {
+        // console.log(e.target.parentElement);
+        let parentEl = e.target;
+        console.log(parentEl);
+        let descriptionEl = parentEl.querySelector(".description");
+        hideAllTodoDescription(descriptionEl);
+        if (descriptionEl.className === "description hidden") {
+            descriptionEl.classList.remove('hidden');
+        } else {
+            descriptionEl.classList.add('hidden');
+        }
+
     }
 })

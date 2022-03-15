@@ -31,9 +31,9 @@ function renderMenu() {
 
         liEl.appendChild(buttonEl);
 
-        if (project === "default") {
-            liEl.classList.add("default-project");
-            buttonEl.classList.add("default-btn");
+        if (project === "Home") {
+            liEl.classList.add("home-project");
+            buttonEl.classList.add("home-btn");
             ulEl.prepend(liEl);
         } else {
             //delete button
@@ -94,6 +94,7 @@ function displayToDo(objectToDisplay) {
         toDoEl.appendChild(todoHeaderEl);
 
         const descEl = createEl("div", "description");
+        descEl.classList.add('hidden');
         descEl.append(todo.description);
         toDoEl.appendChild(descEl);
 
@@ -119,7 +120,7 @@ let objDisplayedInDom;
 
 renderMenu();
 
-displayToDo("default");
-highlightCurrentProject(document.querySelector(".default-project"));
+displayToDo("Home");
+highlightCurrentProject(document.querySelector(".home-project"));
 
 export { displayToDo, resetRightColumn, objDisplayedInDom, renderMenu, menuReset, highlightCurrentProject };
