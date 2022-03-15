@@ -83,9 +83,21 @@ function displayToDo(objectToDisplay) {
 
         const todoHeaderEl = createEl("div", "todo-header");
 
+        const arrowEl = createEl("div", "arrow");
+        todoHeaderEl.appendChild(arrowEl);
+
         const titleEl = createEl("div", "title");
         titleEl.append(todo.title);
         todoHeaderEl.appendChild(titleEl);
+
+        //second DueDate to show when collapsed
+        const dueDateEl2 = createEl("div", "dueDate2");
+        if (todo.dueDate === '') {
+            dueDateEl2.append(todo.dueDate);
+        } else {
+            dueDateEl2.append("Due On : " + new Date(todo.dueDate).toLocaleDateString('en-GB', { day: 'numeric', month: "short", year: 'numeric' }));
+        }
+        todoHeaderEl.appendChild(dueDateEl2);
 
         const deleteBtnEl = createEl("button", "delete-todo");
         deleteBtnEl.append("X");
@@ -105,10 +117,13 @@ function displayToDo(objectToDisplay) {
             dueDateEl.append("Due On : " + new Date(todo.dueDate).toLocaleDateString('en-GB', { day: 'numeric', month: "short", year: 'numeric' }));
 
         }
+        dueDateEl.classList.add('hidden');
         toDoEl.appendChild(dueDateEl);
-        const priorityEl = createEl("div", "priority");
-        priorityEl.append(todo.priority);
-        toDoEl.append(priorityEl);
+
+        //priority to be displayed as color
+        // const priorityEl = createEl("div", "priority");
+        // priorityEl.append(todo.priority);
+        // toDoEl.append(priorityEl);
 
 
         rightColumnEl.appendChild(toDoEl);

@@ -117,7 +117,7 @@ select:focus {
 }
 
 .home-btn {
-  text-align: left;
+  text-align: center;
   width: 20vw;
   min-width: max-content;
   /* padding-left: 18px; */
@@ -160,13 +160,35 @@ select:focus {
 
 .todo-header {
   display: flex;
-  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.arrow {
+  margin-top: -0.7rem;
+}
+
+.arrow::before {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border: 0.5em solid transparent;
+  border-left-color: gray;
+  transform-origin: 0 50%;
+  transition: transform 0.25s;
+}
+
+.arrow.down::before {
+  transform: rotate(90deg);
+  transition: transform 0.25s;
 }
 
 .title {
   font-size: 1.5rem;
   font-weight: bold;
   color: red;
+  margin-right: auto;
 }
 
 .delete-todo {

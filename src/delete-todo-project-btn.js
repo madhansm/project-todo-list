@@ -3,10 +3,10 @@ import { displayToDo, resetRightColumn, menuReset, highlightCurrentProject } fro
 
 function hideAllTodoDescription(targetEl) {
     let allDescriptionEl = document.querySelectorAll('.description');
-    console.log(allDescriptionEl);
+    // console.log(allDescriptionEl);
     allDescriptionEl.forEach(descEl => {
         if (!(descEl === targetEl)) {
-            console.log(descEl);
+            // console.log(descEl);
             descEl.classList.add('hidden');
         }
     });
@@ -37,17 +37,36 @@ document.addEventListener("click", (e) => {
         highlightCurrentProject(e.target.parentElement);
     }
 
-    if (e.target.className === 'todo-header') {
-        // console.log(e.target.parentElement);
-        let parentEl = e.target.parentElement;
-        console.log(parentEl);
-        let descriptionEl = parentEl.querySelector(".description");
-        hideAllTodoDescription(descriptionEl);
-        if (descriptionEl.className === "description hidden") {
-            descriptionEl.classList.remove('hidden');
-        } else {
-            descriptionEl.classList.add('hidden');
-        }
+    // if (e.target.className === 'todo-header') {
+    //     // console.log(e.target.parentElement);
+    //     let parentEl = e.target.parentElement;
+    //     // console.log(parentEl);
+    //     let descriptionEl = parentEl.querySelector(".description");
+    //     hideAllTodoDescription(descriptionEl);
+    //     if (descriptionEl.className === "description hidden") {
+    //         descriptionEl.classList.remove('hidden');
+    //     } else {
+    //         descriptionEl.classList.add('hidden');
+    //     }
 
+    // }
+
+    if (e.target.className === 'arrow' || e.target.className === 'arrow down' || e.target.className === 'todo-header') {
+        let parentEl
+        if (e.target.className === 'todo-header') {
+            parentEl = e.target.parentElement;
+            e.target.querySelector(".arrow").classList.toggle('down');
+        } else {
+            parentEl = e.target.parentElement.parentElement;
+            e.target.classList.toggle('down');
+        }
+        let descriptionEl = parentEl.querySelector(".description");
+        descriptionEl.classList.toggle('hidden');
+
+        let dueEl = parentEl.querySelector(".dueDate");
+        dueEl.classList.toggle("hidden");
+
+        let dueEl2 = parentEl.firstChild.querySelector('.dueDate2').classList.toggle('hidden');
     }
+
 })
