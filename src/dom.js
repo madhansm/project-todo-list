@@ -1,4 +1,7 @@
 import { projectsHolder } from "./data.js";
+import isFuture from 'date-fns/isFuture'
+
+console.log(isFuture(new Date(2022, 5, 15)));
 
 
 //push projects and todo list to DOM
@@ -94,8 +97,10 @@ function displayToDo(objectToDisplay) {
         const dueDateEl2 = createEl("div", "dueDate2");
         if (todo.dueDate === '') {
             dueDateEl2.append(todo.dueDate);
+        } else if (isFuture(new Date(todo.dueDate))) {
+            dueDateEl2.append('due on ' + new Date(todo.dueDate).toLocaleDateString('en-GB', { day: 'numeric', month: "short", year: 'numeric' }));
         } else {
-            dueDateEl2.append("Due On : " + new Date(todo.dueDate).toLocaleDateString('en-GB', { day: 'numeric', month: "short", year: 'numeric' }));
+            dueDateEl2.append('due crossed' + new Date(todo.dueDate).toLocaleDateString('en-GB', { day: 'numeric', month: "short", year: 'numeric' }));
         }
         todoHeaderEl.appendChild(dueDateEl2);
 
