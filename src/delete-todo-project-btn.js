@@ -28,7 +28,7 @@ document.addEventListener("click", (e) => {
         const projectName = e.target.parentElement.firstChild.textContent;
         deleteProject(projectName);
         resetRightColumn();
-        displayToDo("home");
+        displayToDo("Home");
         menuReset();
     }
 
@@ -37,9 +37,9 @@ document.addEventListener("click", (e) => {
         highlightCurrentProject(e.target.parentElement);
     }
 
-    if (e.target.className === 'todo') {
+    if (e.target.className === 'todo-header') {
         // console.log(e.target.parentElement);
-        let parentEl = e.target;
+        let parentEl = e.target.parentElement;
         console.log(parentEl);
         let descriptionEl = parentEl.querySelector(".description");
         hideAllTodoDescription(descriptionEl);

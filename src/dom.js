@@ -15,7 +15,7 @@ function createEl(div, className = "") {
 function renderMenu() {
     const menuEl = document.querySelector(".menu");
     const ulEl = document.querySelector(".project-list");
-    console.log(projectsHolder);
+    // console.log(projectsHolder);
     Object.keys(projectsHolder).forEach(project => {
 
         function displaySelectedProject() {
@@ -102,7 +102,7 @@ function displayToDo(objectToDisplay) {
         if (todo.dueDate === '') {
             dueDateEl.append(todo.dueDate);
         } else {
-            dueDateEl.append(new Date(todo.dueDate).toLocaleDateString('en-GB', { day: 'numeric', month: "short", year: 'numeric' }));
+            dueDateEl.append("Due On : " + new Date(todo.dueDate).toLocaleDateString('en-GB', { day: 'numeric', month: "short", year: 'numeric' }));
 
         }
         toDoEl.appendChild(dueDateEl);

@@ -25,9 +25,9 @@ for (let i = 0; i < 3; i++) {
 }
 
 function saveToLocalStorage() {
-    console.log(projectsHolder);
+    // console.log(projectsHolder);
     localStorage.setItem('projectsHolderObj', JSON.stringify(projectsHolder));
-    console.log(localStorage.getItem('projectsHolderObj'));
+    // console.log(localStorage.getItem('projectsHolderObj'));
 }
 
 // console.log(JSON.parse(localStorage.getItem('projectsHolderObj')));
