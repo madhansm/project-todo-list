@@ -1,5 +1,5 @@
 import { projectsHolder } from "./data.js";
-import isFuture from 'date-fns/isFuture'
+import { isFuture, formatDistanceToNowStrict } from "date-fns";
 
 console.log(isFuture(new Date(2022, 5, 15)));
 
@@ -96,12 +96,29 @@ function displayToDo(objectToDisplay) {
         //second DueDate to show when collapsed
         const dueDateEl2 = createEl("div", "dueDate2");
         if (todo.dueDate === '') {
+
             dueDateEl2.append(todo.dueDate);
+
+        } else if (todo.dueDate.toLocaleDateString() === new Date().toLocaleDateString()) {
+            dueDateEl2.append('due today');
+
         } else if (isFuture(new Date(todo.dueDate))) {
-            dueDateEl2.append('due on ' + new Date(todo.dueDate).toLocaleDateString('en-GB', { day: 'numeric', month: "short", year: 'numeric' }));
+
+            let todayDate = new Date();
+            todayDate.setHours(0, 0, 0, 0);
+
+            if (todo.dueDate - todayDate === 86400000) {
+                dueDateEl2.append('due tomorrow');
+            } else {
+                dueDateEl2.append('due in ' + formatDistanceToNowStrict(todo.dueDate));
+            }
+
         } else {
-            dueDateEl2.append('due crossed' + new Date(todo.dueDate).toLocaleDateString('en-GB', { day: 'numeric', month: "short", year: 'numeric' }));
+            dueDateEl2.append(`due was ${formatDistanceToNowStrict(todo.dueDate)} ago`);
+            // dueDateEl2.append('due crossed ' + new Date(todo.dueDate).toLocaleDateString('en-GB', { day: 'numeric', month: "short", year: 'numeric' }));
+
         }
+
         todoHeaderEl.appendChild(dueDateEl2);
 
         const deleteBtnEl = createEl("button", "delete-todo");
@@ -119,7 +136,7 @@ function displayToDo(objectToDisplay) {
         if (todo.dueDate === '') {
             dueDateEl.append(todo.dueDate);
         } else {
-            dueDateEl.append("Due On : " + new Date(todo.dueDate).toLocaleDateString('en-GB', { day: 'numeric', month: "short", year: 'numeric' }));
+            dueDateEl.append("Due : " + new Date(todo.dueDate).toLocaleDateString('en-GB', { day: 'numeric', month: "short", year: 'numeric' }));
 
         }
         dueDateEl.classList.add('hidden');

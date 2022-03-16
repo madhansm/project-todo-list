@@ -189,6 +189,12 @@ select:focus {
   font-weight: bold;
   color: red;
   margin-right: auto;
+  word-wrap: break-word;
+  min-width: 5rem;
+}
+
+.dueDate2 {
+  text-align: right;
 }
 
 .delete-todo {

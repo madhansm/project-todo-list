@@ -16,11 +16,10 @@ document.addEventListener("click", (e) => {
     //delete todo btn
     if (e.target.className === "delete-todo") {
         const projectName = e.target.parentElement.parentElement.getAttribute("project-name");
-        const title = e.target.parentElement.childNodes[0].textContent;
+        const title = e.target.parentElement.querySelector('.title').textContent;
         deleteTodo(projectName, title);
         resetRightColumn();
         displayToDo(projectName);
-
     }
 
     //delete project btn
@@ -36,20 +35,6 @@ document.addEventListener("click", (e) => {
     if (e.target.className === "project-btn" || e.target.className === "project-btn home-btn") {
         highlightCurrentProject(e.target.parentElement);
     }
-
-    // if (e.target.className === 'todo-header') {
-    //     // console.log(e.target.parentElement);
-    //     let parentEl = e.target.parentElement;
-    //     // console.log(parentEl);
-    //     let descriptionEl = parentEl.querySelector(".description");
-    //     hideAllTodoDescription(descriptionEl);
-    //     if (descriptionEl.className === "description hidden") {
-    //         descriptionEl.classList.remove('hidden');
-    //     } else {
-    //         descriptionEl.classList.add('hidden');
-    //     }
-
-    // }
 
     if (e.target.className === 'arrow' || e.target.className === 'arrow down' || e.target.className === 'todo-header') {
         let parentEl

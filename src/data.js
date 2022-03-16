@@ -20,7 +20,7 @@ projectsHolder.Thrid = [];
 
 for (let i = 0; i < 3; i++) {
     projectsHolder.First.push(makeToDo('Title', i + 'Description is very long', 'High', new Date(2022, 11, 2 + (i * 4))));
-    projectsHolder.Second.push(makeToDo('2Title', i + '222Description is very long', 'Medium', new Date(2022, 10, 1 + (i * 4))));
+    projectsHolder.Second.push(makeToDo('2Title', i + '222Description is very long', 'Medium', new Date(2022, 2, 1 - (i * 4))));
     projectsHolder.Thrid.push(makeToDo('3Title', i + '333Description is very long', 'Low', new Date(2022, 8, 4 + (i * 4))));
 }
 
