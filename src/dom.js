@@ -39,6 +39,7 @@ function renderMenu() {
             buttonEl.classList.add("home-btn");
             ulEl.prepend(liEl);
         } else {
+            liEl.classList.add('hidden');
             //delete button
             let deleteProjectEl = createEl("button", "delete-project");
             deleteProjectEl.append("x");

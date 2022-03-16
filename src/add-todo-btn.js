@@ -84,6 +84,8 @@ document.onkeydown = function (e) {
     if (e.key === "Escape") {
         resetAddToDo();
         closePopUp();
+        document.getElementById("add-project-box").value = '';
+        document.getElementById("add-project-box").blur();
     }
 }
 
