@@ -1,5 +1,5 @@
 import { projectsHolder, saveToLocalStorage } from './data.js';
-import { menuReset, displayToDo, resetRightColumn, objDisplayedInDom } from "./dom.js"
+import { menuReset, displayToDo, resetRightColumn, objDisplayedInDom, highlightCurrentProject } from "./dom.js";
 
 function toggleTextbox() {
     // const projectNameTextBoxEl = document.querySelector(".add-project-textbox");
@@ -38,6 +38,19 @@ textBox.addEventListener("keydown", (e) => {
             projectsHolder[newProject] = [];
             saveToLocalStorage();
             menuReset();
+            let projectsNodeList = document.querySelectorAll(".project");
+            projectsNodeList.forEach(node => {
+                node.classList.remove('hidden');
+            });
+            let checkList = document.querySelectorAll(".project-btn");
+            checkList.forEach(check => {
+                console.log(check);
+
+                if (check.textContent === newProject) {
+                    highlightCurrentProject(check.parentElement);
+                }
+            });
+            // highlightCurrentProject();
         }
         textBox.value = '';
         toggleTextbox();
@@ -58,5 +71,4 @@ function closeProjectAddBox() {
 //     }
 // })
 
-
-export { closeProjectAddBox }
+export { closeProjectAddBox };

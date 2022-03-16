@@ -1,4 +1,4 @@
-import { makeToDo } from "./appLogic.js"
+import { makeToDo } from "./appLogic.js";
 import { projectsHolder, saveToLocalStorage } from './data.js';
 import { displayToDo, resetRightColumn, objDisplayedInDom } from "./dom.js";
 // import isFuture from 'date-fns/isFuture';
@@ -7,6 +7,8 @@ import { displayToDo, resetRightColumn, objDisplayedInDom } from "./dom.js";
 function closePopUp() {
     const modalEl = document.getElementById("myModal");
     modalEl.style.display = "none";
+    const contentsEl = document.querySelector('.contents');
+    contentsEl.classList.remove('blur');
 }
 
 function listenForSaveAndCancel() {
@@ -14,7 +16,7 @@ function listenForSaveAndCancel() {
     saveBtn.addEventListener("click", () => {
 
         //check if title is empty
-        if (!(document.getElementById("title").value)) { alert("Please enter title"); return };
+        if (!(document.getElementById("title").value)) { alert("Please enter title"); return; };
 
         // if title not empty
 
@@ -34,7 +36,7 @@ function listenForSaveAndCancel() {
         saveToDo();
         resetAddToDo();
         closePopUp();
-    })
+    });
 
     const cancelBtn = document.getElementById("cancel");
     cancelBtn.addEventListener("click", () => {
@@ -64,7 +66,7 @@ function saveToDo() {
 
     const dueDateEl = document.getElementById("dueDate");
     let dueDate;
-    if (dueDateEl.value === "") { dueDate = '' } else { dueDate = new Date(dueDateEl.value) };
+    if (dueDateEl.value === "") { dueDate = ''; } else { dueDate = new Date(dueDateEl.value); };
 
     projectsHolder[objDisplayedInDom].push(makeToDo(title, description, priority, dueDate));
     saveToLocalStorage();
@@ -74,7 +76,9 @@ function saveToDo() {
 
 function openPopUpDom() {
     const modalEl = document.getElementById("myModal");
-    modalEl.style.display = "block";
+    modalEl.style.display = "flex";
+    const contentsEl = document.querySelector('.contents');
+    contentsEl.classList.add('blur');
 }
 //listen for add button
 let addToDoBtn = document.getElementById("add-to-do");
@@ -87,6 +91,6 @@ document.onkeydown = function (e) {
         document.getElementById("add-project-box").value = '';
         document.getElementById("add-project-box").blur();
     }
-}
+};
 
 listenForSaveAndCancel();

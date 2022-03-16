@@ -29,6 +29,14 @@ document.addEventListener("click", (e) => {
         resetRightColumn();
         displayToDo("Home");
         menuReset();
+        let projectsNodeList = document.querySelectorAll(".project");
+        projectsNodeList.forEach(node => {
+            if (!(node.firstChild.textContent === 'Home')) {
+                node.classList.remove('hidden');
+            };
+
+        });
+        highlightCurrentProject(document.querySelector(".home-project"));
     }
 
     //highlight current project
@@ -36,8 +44,9 @@ document.addEventListener("click", (e) => {
         highlightCurrentProject(e.target.parentElement);
     }
 
+    //dropdown for menu
     if (e.target.className === 'arrow' || e.target.className === 'arrow down' || e.target.className === 'todo-header' || e.target.className === 'project-list' || e.target.parentElement.className === 'usr-projects') {
-        let parentEl
+        let parentEl;
         if (e.target.className === 'project-list' || e.target.parentElement.className === 'usr-projects') {
             let projectsNodeList = document.querySelectorAll(".project");
             projectsNodeList.forEach(node => {
@@ -48,9 +57,11 @@ document.addEventListener("click", (e) => {
             });
             // console.log(document.querySelectorAll(".project"));
             document.getElementById('projects-arrow').classList.toggle('down');
+            document.getElementById('add-project-box').classList.toggle('hidden');
 
 
         } else {
+            //drop down for todo
             if (e.target.className === 'todo-header') {
                 parentEl = e.target.parentElement;
                 e.target.querySelector(".arrow").classList.toggle('down');
@@ -61,6 +72,9 @@ document.addEventListener("click", (e) => {
             let descriptionEl = parentEl.querySelector(".description");
             descriptionEl.classList.toggle('hidden');
 
+            let priorityEl = parentEl.querySelector(".priority");
+            priorityEl.classList.toggle('hidden');
+
             let dueEl = parentEl.querySelector(".dueDate");
             dueEl.classList.toggle("hidden");
 
@@ -68,5 +82,4 @@ document.addEventListener("click", (e) => {
         }
 
     }
-    console.log(e.target.parentElement.className);
-})
+});

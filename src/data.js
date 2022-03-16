@@ -1,5 +1,5 @@
 //delete line 2&3 for local storage
-import { makeToDo } from './appLogic.js'
+import { makeToDo } from './appLogic.js';
 window.localStorage.clear();
 
 let projectsHolder = JSON.parse(localStorage.getItem('projectsHolderObj'));
@@ -9,7 +9,7 @@ if (!projectsHolder) {
     //home project
     projectsHolder.Home = [];
     for (let i = 0; i < 3; i++) {
-        projectsHolder.Home.push(makeToDo('Sample-Title ' + (i + 1), i + 'Description of the todo looks like this', 'Low', new Date(2022, 5, 5 + (i * 4))));
+        projectsHolder.Home.push(makeToDo('Sample-Title ' + (i + 1), i + 'Description of the todo looks like this', 'Low', new Date(2022, 5, 5,)));
     }
 }
 

@@ -1,7 +1,5 @@
 import { projectsHolder } from "./data.js";
-import { isFuture, formatDistanceToNowStrict } from "date-fns";
-
-console.log(isFuture(new Date(2022, 5, 15)));
+import { isFuture, formatDistanceToNowStrict, isEqual } from "date-fns";
 
 
 //push projects and todo list to DOM
@@ -67,10 +65,12 @@ function resetRightColumn() {
 }
 
 function highlightCurrentProject(projectEl) {
+    // console.log(projectEl);
     let projectNamesEl = document.querySelectorAll(".project");
     projectNamesEl.forEach(project => {
         project.classList.remove("active-project");
     });
+    console.log(projectEl);
     projectEl.classList.add("active-project");
 }
 
@@ -95,18 +95,17 @@ function displayToDo(objectToDisplay) {
         todoHeaderEl.appendChild(titleEl);
 
         //second DueDate to show when collapsed
+        let todayDate = new Date();
+        todayDate.setHours(0, 0, 0, 0);
         const dueDateEl2 = createEl("div", "dueDate2");
         if (todo.dueDate === '') {
 
             dueDateEl2.append(todo.dueDate);
 
-        } else if (todo.dueDate.toLocaleDateString() === new Date().toLocaleDateString()) {
+        } else if (isEqual(todo.dueDate, todayDate)) {
             dueDateEl2.append('due today');
 
         } else if (isFuture(new Date(todo.dueDate))) {
-
-            let todayDate = new Date();
-            todayDate.setHours(0, 0, 0, 0);
 
             if (todo.dueDate - todayDate === 86400000) {
                 dueDateEl2.append('due tomorrow');
@@ -144,6 +143,18 @@ function displayToDo(objectToDisplay) {
         toDoEl.appendChild(dueDateEl);
 
         //priority to be displayed as color
+        const priorityEl = createEl("div", "priority");
+        priorityEl.classList.add('hidden');
+        priorityEl.append(`Priority : ${todo.priority}`);
+        toDoEl.append(priorityEl);
+        console.log(todo.priority);
+        if (todo.priority === 'High') {
+            toDoEl.setAttribute('priority', 'high');
+        } else if (todo.priority === 'Medium') {
+            toDoEl.setAttribute('priority', 'medium');
+        } else if (todo.priority === 'Low') {
+            toDoEl.setAttribute('priority', 'low');
+        }
         // const priorityEl = createEl("div", "priority");
         // priorityEl.append(todo.priority);
         // toDoEl.append(priorityEl);

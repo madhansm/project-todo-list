@@ -9,10 +9,12 @@
   </head>
 
   <body>
-    <header>To-do</header>
-    <div class="contents">
+    <header>
+      <div id="heading">To-do</div>
       <button id="add-to-do">Add ToDo</button>
+    </header>
 
+    <div class="contents">
       <div class="menu">
         <ul class="project-list">
           <li class="usr-projects">
@@ -21,7 +23,12 @@
           </li>
 
           <li class="add-project-textbox">
-            <input type="text" id="add-project-box" placeholder="Add Project" />
+            <input
+              class="hidden"
+              type="text"
+              id="add-project-box"
+              placeholder="Add Project"
+            />
           </li>
         </ul>
       </div>
@@ -30,6 +37,7 @@
       <div class="modal-content">
         <label for="title">To-Do</label>
         <input
+          class="modal-textbox"
           type="text"
           name="title"
           id="title"
@@ -38,6 +46,7 @@
 
         <label for="description">About To-Do</label>
         <input
+          class="modal-textbox"
           type="text"
           name="description"
           id="description"
@@ -46,6 +55,7 @@
 
         <label for="dueDate">Due Date</label>
         <input
+          class="modal-textbox"
           type="text"
           name="dueDate"
           id="dueDate"
@@ -54,14 +64,14 @@
 
         <label for="priority">Priority</label>
         <div class="radio-btn">
-          <input type="radio" name="priority" id="Low" value="low" checked />Low
+          <input type="radio" name="priority" id="Low" value="Low" checked />Low  |
           <input
             type="radio"
             name="priority"
             id="Medium"
-            value="medium"
-          />Medium
-          <input type="radio" name="priority" id="High" value="high" />High
+            value="Medium"
+          />Medium  |
+          <input type="radio" name="priority" id="High" value="High" />High
         </div>
 
         <div class="submit-cancel-btn">
