@@ -13,65 +13,61 @@
     <div class="contents">
       <button id="add-to-do">Add ToDo</button>
 
-      <div class="modal" id="myModal">
-        <div class="modal-content">
-          <label for="title">To-Do</label>
-          <input
-            type="text"
-            name="title"
-            id="title"
-            placeholder="Enter To-Do title here"
-          /><br />
-
-          <label for="description">About To-Do</label>
-          <input
-            type="text"
-            name="description"
-            id="description"
-            placeholder="Enter deatils of To-Do here"
-          /><br />
-
-          <label for="dueDate">Due Date</label>
-          <input
-            type="text"
-            name="dueDate"
-            id="dueDate"
-            placeholder="dd MMM yyyy"
-          /><br />
-
-          <label for="priority">Priority</label>
-          <div class="radio-btn">
-            <input
-              type="radio"
-              name="priority"
-              id="Low"
-              value="low"
-              checked
-            />Low
-            <input
-              type="radio"
-              name="priority"
-              id="Medium"
-              value="medium"
-            />Medium
-            <input type="radio" name="priority" id="High" value="high" />High
-          </div>
-
-          <div class="submit-cancel-btn">
-            <input type="button" value="Save To-Do" id="submit" />
-            <input type="button" value="Cancel" id="cancel" />
-          </div>
-        </div>
-      </div>
-
       <div class="menu">
         <ul class="project-list">
-          <li class="usr-projects">Projects</li>
+          <li class="usr-projects">
+            <div class="arrow" id="projects-arrow"></div>
+            <div>Projects</div>
+          </li>
 
           <li class="add-project-textbox">
             <input type="text" id="add-project-box" placeholder="Add Project" />
           </li>
         </ul>
+      </div>
+    </div>
+    <div class="modal" id="myModal">
+      <div class="modal-content">
+        <label for="title">To-Do</label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Enter To-Do title here"
+        /><br />
+
+        <label for="description">About To-Do</label>
+        <input
+          type="text"
+          name="description"
+          id="description"
+          placeholder="Enter deatils of To-Do here"
+        /><br />
+
+        <label for="dueDate">Due Date</label>
+        <input
+          type="text"
+          name="dueDate"
+          id="dueDate"
+          placeholder="dd MMM yyyy"
+        /><br />
+
+        <label for="priority">Priority</label>
+        <div class="radio-btn">
+          <input type="radio" name="priority" id="Low" value="low" checked />Low
+          <input
+            type="radio"
+            name="priority"
+            id="Medium"
+            value="medium"
+          />Medium
+          <input type="radio" name="priority" id="High" value="high" />High
+        </div>
+
+        <div class="submit-cancel-btn">
+          <input type="button" value="Save To-Do" id="submit" />
+          <input type="button" value="Cancel" id="cancel" />
+        </div>
       </div>
     </div>
   </body>
