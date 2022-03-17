@@ -1,8 +1,6 @@
 import { makeToDo } from "./appLogic.js";
 import { projectsHolder, saveToLocalStorage } from './data.js';
 import { displayToDo, resetRightColumn, objDisplayedInDom } from "./dom.js";
-// import isFuture from 'date-fns/isFuture';
-
 
 function closePopUp() {
     const modalEl = document.getElementById("myModal");
@@ -27,11 +25,6 @@ function listenForSaveAndCancel() {
                 return;
             }
         };
-        // check if date in future
-        // if (!(isFuture(new Date(document.getElementById("dueDate").value)))) {
-        //     alert("Due date cannot be in the past");
-        //     return;
-        // }
 
         saveToDo();
         resetAddToDo();
@@ -80,7 +73,8 @@ function openPopUpDom() {
     const contentsEl = document.querySelector('.contents');
     contentsEl.classList.add('blur');
 }
-//listen for add button
+
+//listen for add todo button
 let addToDoBtn = document.getElementById("add-to-do");
 addToDoBtn.addEventListener("click", openPopUpDom);
 

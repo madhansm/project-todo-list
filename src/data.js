@@ -1,36 +1,36 @@
-//delete line 2&3 for local storage
+//delete line 2 for local storage
+// window.localStorage.clear();
+
+//delete lines 5, 14, 15, 19 to 29 to delete sample data
 import { makeToDo } from './appLogic.js';
-window.localStorage.clear();
 
 let projectsHolder = JSON.parse(localStorage.getItem('projectsHolderObj'));
 
+//check if projectsHolder is available in local storage
 if (!projectsHolder) {
     projectsHolder = {};
     //home project
     projectsHolder.Home = [];
+
+    //sample data
     for (let i = 0; i < 3; i++) {
         projectsHolder.Home.push(makeToDo('Sample-Title ' + (i + 1), i + 'Description of the todo looks like this', 'Low', new Date(2022, 5, 5,)));
     }
 }
 
-//sample data (delete this upon enabling local storage)
+//sample data
 projectsHolder.First = [];
 projectsHolder.Second = [];
 projectsHolder.Thrid = [];
 
 for (let i = 0; i < 3; i++) {
-    projectsHolder.First.push(makeToDo('Title', i + 'Description is very long', 'High', new Date(2022, 11, 2 + (i * 4))));
-    projectsHolder.Second.push(makeToDo('2Title', i + '222Description is very long', 'Medium', new Date(2022, 2, 1 - (i * 4))));
-    projectsHolder.Thrid.push(makeToDo('3Title', i + '333Description is very long', 'Low', new Date(2022, 8, 4 + (i * 4))));
+    projectsHolder.First.push(makeToDo(i + 'Title', i + 'Description is very long', 'High', new Date(2022, 11, 2 + (i * 4))));
+    projectsHolder.Second.push(makeToDo(i + 'Title', i + '222Description is very long', 'Medium', new Date(2022, 2, 1 - (i * 4))));
+    projectsHolder.Thrid.push(makeToDo(i + 'Title', i + '333Description is very long', 'Low', new Date(2022, 8, 4 + (i * 4))));
 }
 
 function saveToLocalStorage() {
-    // console.log(projectsHolder);
     localStorage.setItem('projectsHolderObj', JSON.stringify(projectsHolder));
-    // console.log(localStorage.getItem('projectsHolderObj'));
 }
-
-// console.log(JSON.parse(localStorage.getItem('projectsHolderObj')));
-
 
 export { projectsHolder, saveToLocalStorage };

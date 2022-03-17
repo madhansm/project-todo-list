@@ -21,5 +21,3 @@ function deleteTodo(projectName, todoName) {
 }
 
 export { projectsHolder, makeToDo, deleteTodo, deleteProject };
-
-

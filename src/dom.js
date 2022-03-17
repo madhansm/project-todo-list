@@ -1,11 +1,11 @@
 import { projectsHolder } from "./data.js";
 import { isFuture, formatDistanceToNowStrict, isEqual } from "date-fns";
 
-
 //push projects and todo list to DOM
+
 let contentsEl = document.querySelector(".contents");
 
-//create Element
+//create element constructor
 function createEl(div, className = "") {
     const el = document.createElement(div);
     if (className) el.classList.add(className);
@@ -14,9 +14,9 @@ function createEl(div, className = "") {
 
 //to the left side menu.
 function renderMenu() {
-    const menuEl = document.querySelector(".menu");
+
     const ulEl = document.querySelector(".project-list");
-    // console.log(projectsHolder);
+
     Object.keys(projectsHolder).forEach(project => {
 
         function displaySelectedProject() {
@@ -25,6 +25,7 @@ function renderMenu() {
         };
 
         const liEl = createEl("li", "project");
+
         const buttonEl = createEl("button");
         buttonEl.addEventListener("click", displaySelectedProject);
         buttonEl.append(project);
@@ -38,6 +39,7 @@ function renderMenu() {
             ulEl.prepend(liEl);
         } else {
             liEl.classList.add('hidden');
+
             //delete button
             let deleteProjectEl = createEl("button", "delete-project");
             deleteProjectEl.append("x");
@@ -58,19 +60,16 @@ function menuReset() {
     renderMenu();
 }
 
-
 function resetRightColumn() {
     const rightColumnEl = document.querySelector(".right-column");
     if (rightColumnEl) { rightColumnEl.remove(); };
 }
 
 function highlightCurrentProject(projectEl) {
-    // console.log(projectEl);
     let projectNamesEl = document.querySelectorAll(".project");
     projectNamesEl.forEach(project => {
         project.classList.remove("active-project");
     });
-    console.log(projectEl);
     projectEl.classList.add("active-project");
 }
 
@@ -94,29 +93,30 @@ function displayToDo(objectToDisplay) {
         titleEl.append(todo.title);
         todoHeaderEl.appendChild(titleEl);
 
-        //second DueDate to show when collapsed
+        // DueDate to show when todo is collapsed
         let todayDate = new Date();
         todayDate.setHours(0, 0, 0, 0);
         const dueDateEl2 = createEl("div", "dueDate2");
-        if (todo.dueDate === '') {
 
-            dueDateEl2.append(todo.dueDate);
+        let dueDate = new Date(todo.dueDate);
 
-        } else if (isEqual(todo.dueDate, todayDate)) {
+        if (dueDate === '' || dueDate.toString() === 'Invalid Date') {
+            dueDateEl2.append('');
+
+        } else if (isEqual(dueDate, todayDate)) {
             dueDateEl2.append('due today');
 
-        } else if (isFuture(new Date(todo.dueDate))) {
+        } else if (isFuture(dueDate)) {
 
-            if (todo.dueDate - todayDate === 86400000) {
+            if (dueDate - todayDate === 86400000) {
                 dueDateEl2.append('due tomorrow');
+
             } else {
-                dueDateEl2.append('due in ' + formatDistanceToNowStrict(todo.dueDate));
+                dueDateEl2.append('due in ' + formatDistanceToNowStrict(dueDate));
             }
 
         } else {
-            dueDateEl2.append(`due was ${formatDistanceToNowStrict(todo.dueDate)} ago`);
-            // dueDateEl2.append('due crossed ' + new Date(todo.dueDate).toLocaleDateString('en-GB', { day: 'numeric', month: "short", year: 'numeric' }));
-
+            dueDateEl2.append('due was' + formatDistanceToNowStrict(dueDate) + 'ago');
         }
 
         todoHeaderEl.appendChild(dueDateEl2);
@@ -130,24 +130,26 @@ function displayToDo(objectToDisplay) {
         const descEl = createEl("div", "description");
         descEl.classList.add('hidden');
         descEl.append(todo.description);
+
         toDoEl.appendChild(descEl);
 
+        //Due Date to show when todo is expanded
         const dueDateEl = createEl("div", "dueDate");
-        if (todo.dueDate === '') {
-            dueDateEl.append(todo.dueDate);
+        if (dueDate === '' || dueDate.toString() === 'Invalid Date') {
+            dueDateEl.append('');
         } else {
-            dueDateEl.append("Due : " + new Date(todo.dueDate).toLocaleDateString('en-GB', { day: 'numeric', month: "short", year: 'numeric' }));
+            dueDateEl.append("Due : " + dueDate.toLocaleDateString('en-GB', { day: 'numeric', month: "short", year: 'numeric' }));
 
         }
         dueDateEl.classList.add('hidden');
         toDoEl.appendChild(dueDateEl);
 
-        //priority to be displayed as color
         const priorityEl = createEl("div", "priority");
         priorityEl.classList.add('hidden');
         priorityEl.append(`Priority : ${todo.priority}`);
         toDoEl.append(priorityEl);
-        console.log(todo.priority);
+
+        //priority to be displayed as color
         if (todo.priority === 'High') {
             toDoEl.setAttribute('priority', 'high');
         } else if (todo.priority === 'Medium') {
@@ -155,20 +157,17 @@ function displayToDo(objectToDisplay) {
         } else if (todo.priority === 'Low') {
             toDoEl.setAttribute('priority', 'low');
         }
-        // const priorityEl = createEl("div", "priority");
-        // priorityEl.append(todo.priority);
-        // toDoEl.append(priorityEl);
-
 
         rightColumnEl.appendChild(toDoEl);
     });
+
     contentsEl.appendChild(rightColumnEl);
 }
+
 // to keep track of what project is being displayed
 let objDisplayedInDom;
 
 renderMenu();
-
 displayToDo("Home");
 highlightCurrentProject(document.querySelector(".home-project"));
 

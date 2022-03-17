@@ -3,21 +3,21 @@ import { displayToDo, resetRightColumn, menuReset, highlightCurrentProject } fro
 
 function hideAllTodoDescription(targetEl) {
     let allDescriptionEl = document.querySelectorAll('.description');
-    // console.log(allDescriptionEl);
     allDescriptionEl.forEach(descEl => {
         if (!(descEl === targetEl)) {
-            // console.log(descEl);
             descEl.classList.add('hidden');
         }
     });
 }
 
 document.addEventListener("click", (e) => {
+
     //delete todo btn
     if (e.target.className === "delete-todo") {
         const projectName = e.target.parentElement.parentElement.getAttribute("project-name");
         const title = e.target.parentElement.querySelector('.title').textContent;
         deleteTodo(projectName, title);
+
         resetRightColumn();
         displayToDo(projectName);
     }
@@ -26,9 +26,11 @@ document.addEventListener("click", (e) => {
     if (e.target.className === "delete-project") {
         const projectName = e.target.parentElement.firstChild.textContent;
         deleteProject(projectName);
+
         resetRightColumn();
         displayToDo("Home");
         menuReset();
+
         let projectsNodeList = document.querySelectorAll(".project");
         projectsNodeList.forEach(node => {
             if (!(node.firstChild.textContent === 'Home')) {
@@ -55,7 +57,6 @@ document.addEventListener("click", (e) => {
                 };
 
             });
-            // console.log(document.querySelectorAll(".project"));
             document.getElementById('projects-arrow').classList.toggle('down');
             document.getElementById('add-project-box').classList.toggle('hidden');
 
